@@ -1,0 +1,12 @@
+
+.main_body{ background:#eef0f3; margin:64px auto; padding:30px 0px; }
+.logo_login{ margin:0 auto 52px; text-align:center; }
+.hr1{ padding:0px; margin:0px;}
+.sort_deesc{ max-width:860px; margin:0 auto; text-align:center; font-size:18px; line-height:24px;}
+.login_cont{ width:370px; margin:20px auto 0;  border:3px solid #d2d7d7; padding:35px 25px; position: relative;}
+.login_cont .title{text-align:center; font-size:30px; background:#eef0f3; padding:0 10px; line-height:30px; text-transform:uppercase; position: absolute; z-index:1233; left:98px; top:-23px;}
+.log_btn{ margin:0 0 1px; text-align:center;}
+.log_btn a{ background:#f58020; font-size:25px; text-decoration:none; color:#fff; width:300px; border-radius:5px; display:block; padding:12px 0 16px;}
+.cmt{ text-align:center; color:#ed1c24;}
+
+

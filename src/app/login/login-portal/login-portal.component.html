@@ -1,0 +1,31 @@
+<div class="">
+  <div class="container main_body">
+    <div class="logo_login">
+      <a href="javascript:void(0)"><img src="assets/images/logo_login.png" alt="logo"></a>
+    </div>
+    <h1 class="center">SAMAJ SUTRA<br><span class="hr1"> <img src="assets/images/hr1.png" alt=""></span></h1>
+          
+    <div class="login_cont">
+  
+      <div class="form_log">
+        <div class="alert alert-danger" *ngIf="!isSuccess && ngForm.submitted">
+          <p>User data not found. Please try again.</p>
+        </div>
+        <form [formGroup]="loginFormGroup" #ngForm="ngForm">
+          <div class="form-group">
+            <label>User Name</label>
+            <input type="text" class="form-control" [(ngModel)]="loginModel.userName" formControlName="userName">
+          </div> 
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" [(ngModel)]="loginModel.password" formControlName="password">
+          </div>  						
+          <div class="form-group">
+            <button type="submit" name="submit" class="btn btn-primary btn-lg" [disabled]="!loginFormGroup?.valid" required="required" (click)="doLogin()">Login</button>
+          </div>
+        </form>
+        <div class="cmt">(User name must be Addhar number, Self mobile no, Voter ID no, PAN no)</div>
+      </div>
+    </div>
+  </div>
+</div>

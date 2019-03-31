@@ -1,0 +1,47 @@
+<div class="">
+  <div class="container main_body">
+    <div class="logo_login">
+      <a href="javascript:void(0)"><img src="assets/images/logo_login.png" alt="logo"></a>
+    </div>
+    <h1 class="center">Individual Registration<br><span class="hr1"> <img src="assets/images/hr1.png" alt=""></span></h1>
+          
+    <div class="login_cont">
+      <div class="form_log">
+        <form [formGroup]="registerFormGroup" #ngForm="ngForm">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" class="form-control" [(ngModel)]="registerModel.fullName" formControlName="fullName">
+          </div> 
+          <div class="form-group">
+            <label>Aadhar Card No</label>
+            <input type="text" class="form-control" [(ngModel)]="registerModel.aadharNumber" formControlName="aadharNumber">
+          </div>
+          <div class="form-group">
+            <label>Email id</label>
+            <input type="text" class="form-control" [(ngModel)]="registerModel.email" formControlName="email">
+          </div> 						
+          <div class="form-group">
+            <label>Mobile No</label>
+            <input type="text" class="form-control" [(ngModel)]="registerModel.mobile" formControlName="mobile">
+          </div> 
+          <div class="form-group">
+            <label>Password</label>
+            <input type="text" class="form-control" [(ngModel)]="registerModel.password" formControlName="password">
+          </div> 
+          <div class="form-group">
+            <label>Confirm Password</label>
+            <input type="text" class="form-control" [(ngModel)]="registerModel.rePassword" formControlName="rePassword">
+          </div> 
+          <!-- <div class="form-group">
+            <label>OTP</label>
+            <input type="text" class="form-control" [(ngModel)]="registerModel.userName" formControlName="userName">
+          </div>  -->
+                    
+          <div class="form-group">
+            <button type="submit" name="submit" class="btn btn-primary btn-lg" [disabled]="!registerFormGroup?.valid" required="required">Register</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
