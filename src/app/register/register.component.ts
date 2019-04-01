@@ -14,6 +14,13 @@ export class RegisterComponent implements OnInit {
   registerModel: Register;
   registerFormGroup: FormGroup;
 
+  fullName : FormControl;
+  aadharNumber : FormControl;
+  email : FormControl;
+  mobile : FormControl;
+  password : FormControl;
+  rePassword : FormControl;
+
   constructor(
     private registerService: RegisterService
   ) {
@@ -21,15 +28,28 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.createFormControl();
+    this.createFormGroup();
+  }
+
+  createFormControl() {
+    this.fullName = new FormControl( null, [ Validators.required ]);
+    this.aadharNumber = new FormControl( null, [ Validators.required ]);
+    this.email = new FormControl( null, [ Validators.required, Validators.email ]);
+    this.mobile = new FormControl( null, [ Validators.required ]);
+    this.password = new FormControl( null, [ Validators.required ]);
+    this.rePassword = new FormControl( null, [ Validators.required ]);
+  }
+
+  createFormGroup() {
     this.registerFormGroup = new FormGroup({
-      fullName: new FormControl(null, [Validators.required]),
-      aadharNumber: new FormControl(null, [Validators.required]),
-      email: new FormControl(null, [Validators.required]),
-      mobile: new FormControl(null, [Validators.required]),
-      password: new FormControl(null, [Validators.required]),
-      rePassword: new FormControl(null, [Validators.required]),
-      // otp: new FormControl(null, [Validators.required])
-    });
+      fullName : this.fullName,
+      aadharNumber : this.aadharNumber,
+      email : this.email,
+      mobile : this.mobile,
+      password : this.password,
+      rePassword : this.rePassword
+    })
   }
 
   doRegister() {
