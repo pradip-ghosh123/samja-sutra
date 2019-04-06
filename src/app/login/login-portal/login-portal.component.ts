@@ -73,4 +73,8 @@ export class LoginPortalComponent implements OnInit {
     }
   }
 
+  onForgotPasswordClick() {
+    this.router.navigate(['./forgot_password']);
+  }
+
 }

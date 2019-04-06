@@ -19,7 +19,8 @@
           <div class="form-group">
             <label>Password</label>
             <input type="password" class="form-control" [(ngModel)]="loginModel.password" formControlName="password">
-          </div>  						
+          </div>
+          <p class="text-right"><a href="javascript:void(0)" (click)="onForgotPasswordClick()">Forgot Password?</a></p>
           <div class="form-group">
             <button type="submit" name="submit" class="btn btn-primary btn-lg" [disabled]="!loginFormGroup?.valid" required="required" (click)="doLogin()">Login</button>
           </div>
