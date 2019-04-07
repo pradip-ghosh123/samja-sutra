@@ -11,7 +11,7 @@
           <div class="form-group">
             <label>Full Name</label>
             <input type="text" class="form-control" [(ngModel)]="registerModel.fullName" 
-            [formControl]="fullName">
+            [formControl]="fullName" autofocus>
             <div class="invalid-feedback form-err-feild" 
             *ngIf="fullName.errors && (fullName.dirty || fullName.touched)">
               <span *ngIf="fullName.errors.required">*Name is required.</span>

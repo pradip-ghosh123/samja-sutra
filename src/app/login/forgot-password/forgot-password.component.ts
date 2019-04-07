@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { RoutesUrl } from 'src/app/routes-url';
 
 @Component({
   selector: 'app-forgot-password',
@@ -11,6 +12,7 @@ export class ForgotPasswordComponent implements OnInit {
   forgotFormGroup: FormGroup;
   email: string;
   resetLinkSent = false;
+  routesUrl = new RoutesUrl();
 
   constructor(private router: Router) {
     this.createFormGroup();
@@ -30,7 +32,8 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   redirectToLogin() {
-    this.router.navigate(['./login']);
+    const path = this.routesUrl.LOGIN;
+    this.router.navigate([path]);
   }
 
 }
