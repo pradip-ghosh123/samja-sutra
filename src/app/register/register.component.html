@@ -23,6 +23,7 @@
             [formControl]="aadharNumber">
             <div class="invalid-feedback form-err-feild" 
             *ngIf="aadharNumber.errors && (aadharNumber.dirty || aadharNumber.touched)">
+              <span *ngIf="aadharNumber.errors.pattern">*Please input numeric value only.</span>
               <span *ngIf="aadharNumber.errors.required">*Adhar card is required.</span>
             </div>
           </div>
@@ -41,13 +42,14 @@
             [formControl]="mobile">
             <div class="invalid-feedback form-err-feild" 
             *ngIf="mobile.errors && (mobile.dirty || mobile.touched)">
+              <span *ngIf="mobile.errors.pattern">*Please input numeric value only.</span>
               <span *ngIf="mobile.errors.required">*Mobile number is required.</span>
             </div>
           </div> 
           <div class="form-group">
             <label>Password</label>
-            <input type="text" class="form-control" [(ngModel)]="registerModel.password" 
-            [formControl]="password">
+            <input type="password" class="form-control" [(ngModel)]="registerModel.password" 
+            [formControl]="password" name="password">
             <div class="invalid-feedback form-err-feild" 
             *ngIf="password.errors && (password.dirty || password.touched)">
               <span *ngIf="password.errors.required">*Password number is required.</span>
@@ -55,11 +57,12 @@
           </div> 
           <div class="form-group">
             <label>Confirm Password</label>
-            <input type="text" class="form-control" [(ngModel)]="registerModel.rePassword" 
-            [formControl]="rePassword">
+            <input type="password" class="form-control" [(ngModel)]="registerModel.rePassword" 
+            [formControl]="rePassword" confirmPassValidator="password">
             <div class="invalid-feedback form-err-feild" 
             *ngIf="rePassword.errors && (rePassword.dirty || rePassword.touched)">
               <span *ngIf="rePassword.errors.required">*Confirm password number is required.</span>
+              <span *ngIf="rePassword.errors.notEqual && !rePassword.errors.required">*Password and comfirm password has to be same.</span>
             </div>
           </div> 
           <!-- <div class="form-group">
@@ -69,7 +72,7 @@
                     
           <div class="form-group">
             <button type="submit" name="submit" class="btn btn-primary btn-lg" required="required"
-            [disabled]="!registerFormGroup.valid"
+            [disabled]="!registerFormGroup.valid" (click)="doRegister($event)"
             >Register</button>
           </div>
         </form>

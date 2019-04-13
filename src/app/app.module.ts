@@ -15,6 +15,10 @@ import { LoginPortalComponent } from './login/login-portal/login-portal.componen
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterComponent } from './register/register.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+
+//Importing custom directives
+import { ConfirmPasswordValidator } from './utility/confirm-password-validator.directive';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,9 @@ import { RegisterComponent } from './register/register.component';
     LoginComponent,
     LoginPortalComponent,
     DashboardComponent,
-    RegisterComponent
+    RegisterComponent,
+    ForgotPasswordComponent,
+    ConfirmPasswordValidator
   ],
   imports: [
     BrowserModule,

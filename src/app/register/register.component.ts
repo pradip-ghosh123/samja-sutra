@@ -34,9 +34,9 @@ export class RegisterComponent implements OnInit {
 
   createFormControl() {
     this.fullName = new FormControl( null, [ Validators.required ]);
-    this.aadharNumber = new FormControl( null, [ Validators.required ]);
+    this.aadharNumber = new FormControl( null, [ Validators.required,  Validators.pattern("^[0-9]*$")]);
     this.email = new FormControl( null, [ Validators.required, Validators.email ]);
-    this.mobile = new FormControl( null, [ Validators.required ]);
+    this.mobile = new FormControl( null, [ Validators.required, Validators.pattern("^[0-9]*$") ]);
     this.password = new FormControl( null, [ Validators.required ]);
     this.rePassword = new FormControl( null, [ Validators.required ]);
   }
@@ -52,25 +52,11 @@ export class RegisterComponent implements OnInit {
     })
   }
 
-  doRegister() {
+  doRegister( e ) {
     if (this.registerFormGroup.valid) {
-      const obj = {
-        'fullName' : this.registerModel.fullName,
-        'aadharNumber' : this.registerModel.aadharNumber,
-        'email' : this.registerModel.email,
-        'mobile' : this.registerModel.mobile,
-        'password' : this.registerModel.password,
-      }
-      this.registerService.registerUser(obj)
-      .subscribe(
-        (data: any) => {
-          console.log('Registration successful.');
-          console.log(data);
-        },
-        (err: any) => {
-          console.log(err);
-        }
-      );
+      e.preventDefault();
+      console.log( 'Registration data', this.registerModel);
+      
     }
   }
 }
