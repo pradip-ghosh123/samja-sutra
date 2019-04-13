@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { AuthenticateService } from 'src/app/authenticate.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Login } from '../model/login';
+import { RoutesUrl } from 'src/app/routes-url';
 
 @Component({
   selector: 'app-login-portal',
@@ -16,6 +17,7 @@ export class LoginPortalComponent implements OnInit {
   loginFormGroup: FormGroup;
   isSuccess: boolean = false;
   loginModel: Login;
+  routesUrl = new RoutesUrl();
 
   constructor(private acivatedRoute: ActivatedRoute,
     private router: Router,
@@ -27,7 +29,7 @@ export class LoginPortalComponent implements OnInit {
           this.userTypeName = this.findUserTypeName(this.userTypeValue);
         }
         if (this.userTypeName === null || this.userTypeValue === undefined) {
-          this.router.navigate(['./login']);
+          this.router.navigate([this.routesUrl.LOGIN]);
         }
       });
   }
@@ -63,7 +65,7 @@ export class LoginPortalComponent implements OnInit {
         (data: any) => {
           if (data.user_name === this.loginModel.userName.trim() && data.password === this.loginModel.password.trim()) {
             this.isSuccess = true;
-            this.router.navigate(['./app/dashboard']);
+            this.router.navigate([this.routesUrl.DASHBOARD]);
           } else {
             this.isSuccess = false;
           }
@@ -71,6 +73,10 @@ export class LoginPortalComponent implements OnInit {
         }
       );
     }
+  }
+
+  onForgotPasswordClick() {
+    this.router.navigate([this.routesUrl.FORGOT_PASSWORD]);
   }
 
 }
