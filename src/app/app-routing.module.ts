@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { LoginPortalComponent } from './login/login-portal/login-portal.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterComponent } from './register/register.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'app/dashboard',
     component: DashboardComponent
+  },
+  {
+    path: 'forgot-password',
+    component: ForgotPasswordComponent
   },
   {
     path: '**',
