@@ -11,7 +11,7 @@
           <div class="form-group">
             <label>Full Name</label>
             <input type="text" class="form-control" [(ngModel)]="registerModel.fullName" 
-            [formControl]="fullName">
+            [formControl]="fullName" autofocus>
             <div class="invalid-feedback form-err-feild" 
             *ngIf="fullName.errors && (fullName.dirty || fullName.touched)">
               <span *ngIf="fullName.errors.required">*Name is required.</span>
@@ -19,12 +19,14 @@
           </div> 
           <div class="form-group">
             <label>Aadhar Card No</label>
-            <input type="text" class="form-control" [(ngModel)]="registerModel.aadharNumber" 
+            <input type="number" class="form-control" [(ngModel)]="registerModel.aadharNumber" 
             [formControl]="aadharNumber">
             <div class="invalid-feedback form-err-feild" 
             *ngIf="aadharNumber.errors && (aadharNumber.dirty || aadharNumber.touched)">
               <span *ngIf="aadharNumber.errors.pattern">*Please input numeric value only.</span>
               <span *ngIf="aadharNumber.errors.required">*Adhar card is required.</span>
+              <span *ngIf="aadharNumber.errors.required">*Adhar card number is required.</span>
+              <span *ngIf="aadharNumber.errors.pattern">*Please enter 12 digits valid aadhar number.</span>
             </div>
           </div>
           <div class="form-group">
@@ -32,27 +34,31 @@
             <input type="text" class="form-control" [(ngModel)]="registerModel.email" 
             [formControl]="email">
             <div class="invalid-feedback form-err-feild" *ngIf="email.errors && (email.touched || email.dirty)">
-                <span *ngIf="email.errors.required">*Email is required.</span>
-                <span *ngIf="email.errors.email">**Invalid email. Please input a valid email id.</span>
+                <span *ngIf="email.errors.required">*Email id is required.</span>
+                <span *ngIf="email.errors.email">*Invalid email. Please enter a valid email id.</span>
             </div>
           </div> 						
           <div class="form-group">
             <label>Mobile No</label>
-            <input type="text" class="form-control" [(ngModel)]="registerModel.mobile" 
+            <input type="number" class="form-control" [(ngModel)]="registerModel.mobile" 
             [formControl]="mobile">
             <div class="invalid-feedback form-err-feild" 
             *ngIf="mobile.errors && (mobile.dirty || mobile.touched)">
               <span *ngIf="mobile.errors.pattern">*Please input numeric value only.</span>
               <span *ngIf="mobile.errors.required">*Mobile number is required.</span>
+              <span *ngIf="mobile.errors.pattern">*Please enter 10 digits valid mobile number.</span>
             </div>
           </div> 
           <div class="form-group">
             <label>Password</label>
             <input type="password" class="form-control" [(ngModel)]="registerModel.password" 
             [formControl]="password" name="password">
+            [formControl]="password">
             <div class="invalid-feedback form-err-feild" 
             *ngIf="password.errors && (password.dirty || password.touched)">
-              <span *ngIf="password.errors.required">*Password number is required.</span>
+              <p *ngIf="password.errors.required">*Password is required.</p>
+              <p *ngIf="password.errors.minlength">*Password must be at least 8 characters long.</p>
+              <p *ngIf="password.errors.pattern">*Your password must contain at least one uppercase, one lowercase, and one number.</p>
             </div>
           </div> 
           <div class="form-group">
@@ -63,6 +69,14 @@
             *ngIf="rePassword.errors && (rePassword.dirty || rePassword.touched)">
               <span *ngIf="rePassword.errors.required">*Confirm password number is required.</span>
               <span *ngIf="rePassword.errors.notEqual && !rePassword.errors.required">*Password and comfirm password has to be same.</span>
+            [formControl]="rePassword">
+            <div class="invalid-feedback form-err-feild" 
+            *ngIf="rePassword.errors && (rePassword.dirty || rePassword.touched)">
+              <p *ngIf="rePassword.errors.required">*Confirm password is required.</p>
+              <p *ngIf="registerModel.rePassword !== registerModel.password">*Password mismatch.</p>
+            </div>
+            <div class="invalid-feedback form-err-feild" *ngIf="rePassword.dirty || rePassword.touched">
+              <p *ngIf="registerModel.rePassword !== registerModel.password">*Password mismatch.</p>
             </div>
           </div> 
           <!-- <div class="form-group">
@@ -73,6 +87,7 @@
           <div class="form-group">
             <button type="submit" name="submit" class="btn btn-primary btn-lg" required="required"
             [disabled]="!registerFormGroup.valid" (click)="doRegister($event)"
+            [disabled]="!registerFormGroup.valid || (registerModel.rePassword !== registerModel.password)"
             >Register</button>
           </div>
         </form>

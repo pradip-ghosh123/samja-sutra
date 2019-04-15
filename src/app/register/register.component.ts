@@ -38,6 +38,14 @@ export class RegisterComponent implements OnInit {
     this.email = new FormControl( null, [ Validators.required, Validators.email ]);
     this.mobile = new FormControl( null, [ Validators.required, Validators.pattern("^[0-9]*$") ]);
     this.password = new FormControl( null, [ Validators.required ]);
+    this.aadharNumber = new FormControl( null, [ Validators.required, Validators.pattern("^[0-9]{12}$")]);
+    this.email = new FormControl( null, [ Validators.required, Validators.email ]);
+    this.mobile = new FormControl( null, [ Validators.required, Validators.pattern("[0-9]{10}") ]);
+    this.password = new FormControl( null, Validators.compose([
+      Validators.minLength(8),
+      Validators.required,
+      Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{1,}$") // this is for at least one uppercase, one lowercase, one number validation
+      ])); // "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{1,}$"
     this.rePassword = new FormControl( null, [ Validators.required ]);
   }
 

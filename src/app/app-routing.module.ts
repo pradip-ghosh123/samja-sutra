@@ -4,28 +4,38 @@ import { LoginComponent } from './login/login.component';
 import { LoginPortalComponent } from './login/login-portal/login-portal.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterComponent } from './register/register.component';
+
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+
+import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
+import { RoutesUrl } from './routes-url';
+
+const routesUrl = new RoutesUrl();
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'login'
+    redirectTo: routesUrl.LOGIN
   },
   {
-    path: 'login',
+    path: routesUrl.LOGIN,
     component: LoginComponent
   },
   {
-    path: 'login/:usertype',
+    path: routesUrl.LOGIN_PORTAL,
     component: LoginPortalComponent
   },
   {
-    path: 'register',
+    path: routesUrl.FORGOT_PASSWORD,
+    component: ForgotPasswordComponent
+  },
+  {
+    path: routesUrl.REGISTER,
     component: RegisterComponent
   },
   {
-    path: 'app/dashboard',
+    path: routesUrl.DASHBOARD,
     component: DashboardComponent
   },
   {
@@ -35,7 +45,7 @@ const routes: Routes = [
   {
     path: '**',
     pathMatch: 'full',
-    redirectTo: 'login'
+    redirectTo: routesUrl.LOGIN
   }
 ];
 

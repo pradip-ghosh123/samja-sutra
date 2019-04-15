@@ -15,10 +15,13 @@ import { LoginPortalComponent } from './login/login-portal/login-portal.componen
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterComponent } from './register/register.component';
+
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 //Importing custom directives
 import { ConfirmPasswordValidator } from './utility/confirm-password-validator.directive';
+
+import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,7 @@ import { ConfirmPasswordValidator } from './utility/confirm-password-validator.d
     RegisterComponent,
     ForgotPasswordComponent,
     ConfirmPasswordValidator
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
